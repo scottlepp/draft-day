@@ -1,8 +1,9 @@
 import { Redirect, Route } from 'react-router-dom';
-import { IonApp, IonRouterOutlet } from '@ionic/react';
+import { IonApp, IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import Home from './pages/Home';
-import ViewMessage from './pages/ViewMessage';
+import { heart, archive} from 'ionicons/icons';
+
+import { personCircle } from 'ionicons/icons';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -22,21 +23,46 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import Draft from './pages/Draft';
+import Team from './pages/Team';
+import Drafted from './pages/Drafted';
 
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
+      <IonTabs>
       <IonRouterOutlet>
         <Route path="/" exact={true}>
           <Redirect to="/home" />
         </Route>
         <Route path="/home" exact={true}>
-          <Home />
+          <Draft />
         </Route>
-        <Route path="/message/:id">
-           <ViewMessage />
+        <Route path="/team" exact={true}>
+           <Team />
+        </Route>
+        <Route path="/drafted" exact={true}>
+           <Drafted />
         </Route>
       </IonRouterOutlet>
+
+        <IonTabBar slot="top">
+          <IonTabButton tab="players" href='/home'>
+            <IonIcon icon={personCircle} />
+            <IonLabel>Players</IonLabel>
+          </IonTabButton>
+
+          <IonTabButton tab="heart" href='/team'>
+            <IonIcon icon={heart} />
+            <IonLabel>My Team</IonLabel>
+          </IonTabButton>
+
+          <IonTabButton tab="drafted" href='/drafted'>
+            <IonIcon icon={archive} />
+            <IonLabel>Drafted</IonLabel>
+          </IonTabButton>
+        </IonTabBar>
+      </IonTabs>
     </IonReactRouter>
   </IonApp>
 );
