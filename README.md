@@ -1,5 +1,5 @@
 # draft-day
-PWA for fantasy football draft
+PWA for fantasy football draft.  Uses data analyzed by Boris Chen from FantasyPros.com:  http://www.borischen.co/
 
 Demo: https://fantasy-draft-day.web.app/
 
